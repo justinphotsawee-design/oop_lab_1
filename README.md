@@ -1,0 +1,6 @@
+- Commit 1: Initial commit for data processing code  
+  - Basic filtering and aggregation in procedural style.
+- Commit 2: Refactor using lambda functions  
+  - Introduced filter() and aggregate() reusable functions.
+- Commit 3: Refactor into OOP style  
+  - Added DataLoader and Table classes with methods for filtering and aggregation.
