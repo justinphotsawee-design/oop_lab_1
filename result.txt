@@ -1,0 +1,26 @@
+
+List all cities in Italy:
+cities_filtered:[{'city': 'Ancona', 'country': 'Italy', 'latitude': '43.60', 'longitude': '13.50', 'temperature': '13.52'}, {'city': 'Bari', 'country': 'Italy', 'latitude': '41.11', 'longitude': '16.87', 'temperature': '15.15'}, {'city': 'Bergamo', 'country': 'Italy', 'latitude': '45.70', 'longitude': '9.67', 'temperature': '9.12'}, {'city': 'Bologna', 'country': 'Italy', 'latitude': '44.50', 'longitude': '11.34', 'temperature': '11.69'}, {'city': 'Catania', 'country': 'Italy', 'latitude': '37.50', 'longitude': '15.08', 'temperature': '15.04'}, {'city': 'Cosenza', 'country': 'Italy', 'latitude': '39.27', 'longitude': '16.29', 'temperature': '16.60'}, {'city': 'Foggia', 'country': 'Italy', 'latitude': '41.46', 'longitude': '15.56', 'temperature': '13.83'}, {'city': 'Genoa', 'country': 'Italy', 'latitude': '44.41', 'longitude': '8.93', 'temperature': '12.94'}, {'city': 'Messina', 'country': 'Italy', 'latitude': '38.20', 'longitude': '15.55', 'temperature': '16.54'}, {'city': 'Milan', 'country': 'Italy', 'latitude': '45.47', 'longitude': '9.21', 'temperature': '6.65'}, {'city': 'Palermo', 'country': 'Italy', 'latitude': '38.13', 'longitude': '13.35', 'temperature': '17.90'}, {'city': 'Perugia', 'country': 'Italy', 'latitude': '43.11', 'longitude': '12.39', 'temperature': '11.70'}, {'city': 'Pescara', 'country': 'Italy', 'latitude': '42.46', 'longitude': '14.22', 'temperature': '15.13'}, {'city': 'Rome', 'country': 'Italy', 'latitude': '41.90', 'longitude': '12.48', 'temperature': '15.10'}, {'city': 'Trieste', 'country': 'Italy', 'latitude': '45.65', 'longitude': '13.80', 'temperature': '11.21'}]
+
+Average temperature for all cities in Italy:
+13.474666666666668
+
+List all non-EU countries:
+countries_filtered:[{'country': 'Albania', 'population': '2.9', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Andorra', 'population': '0.07', 'EU': 'no', 'coastline': 'no'}, {'country': 'Belarus', 'population': '9.48', 'EU': 'no', 'coastline': 'no'}, {'country': 'Bosnia and Herzegovina', 'population': '3.8', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Iceland', 'population': '0.33', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Kosovo', 'population': '1.91', 'EU': 'no', 'coastline': 'no'}, {'country': 'Liechtenstein', 'population': '0.04', 'EU': 'no', 'coastline': 'no'}, {'country': 'Macedonia', 'population': '2.08', 'EU': 'no', 'coastline': 'no'}, {'country': 'Moldova', 'population': '4.06', 'EU': 'no', 'coastline': 'no'}, {'country': 'Montenegro', 'population': '0.63', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Norway', 'population': '5.27', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Serbia', 'population': '8.81', 'EU': 'no', 'coastline': 'no'}, {'country': 'Switzerland', 'population': '8.38', 'EU': 'no', 'coastline': 'no'}, {'country': 'Turkey', 'population': '79.62', 'EU': 'no', 'coastline': 'yes'}, {'country': 'Ukraine', 'population': '44.62', 'EU': 'no', 'coastline': 'yes'}]
+
+Number of countries that have coastline:
+29
+
+First 5 entries of the joined table (cities and countries):
+{'city': 'Aalborg', 'country': 'Denmark', 'latitude': '57.03', 'longitude': '9.92', 'temperature': '7.52', 'population': '5.69', 'EU': 'yes', 'coastline': 'yes'}  
+{'city': 'Aberdeen', 'country': 'United Kingdom', 'latitude': '57.17', 'longitude': '-2.08', 'temperature': '8.10', 'population': '65.11', 'EU': 'yes', 'coastline': 'yes'}
+{'city': 'Abisko', 'country': 'Sweden', 'latitude': '63.35', 'longitude': '18.83', 'temperature': '0.20', 'population': '9.85', 'EU': 'yes', 'coastline': 'yes'}   
+{'city': 'Adana', 'country': 'Turkey', 'latitude': '36.99', 'longitude': '35.32', 'temperature': '18.67', 'population': '79.62', 'EU': 'no', 'coastline': 'yes'}   
+{'city': 'Albacete', 'country': 'Spain', 'latitude': '39.00', 'longitude': '-1.87', 'temperature': '12.62', 'population': '46.06', 'EU': 'yes', 'coastline': 'yes'}
+
+Cities whose temperatures are below 5.0 in non-EU countries:
+[{'city': 'Bergen', 'country': 'Norway', 'latitude': '60.39', 'longitude': '5.32', 'temperature': '1.75', 'population': '5.27', 'EU': 'no', 'coastline': 'yes'}, {'city': 'Bodo', 'country': 'Norway', 'latitude': '67.25', 'longitude': '14.40', 'temperature': '4.50', 'population': '5.27', 'EU': 'no', 'coastline': 'yes'}, {'city': 'Orsha', 'country': 'Belarus', 'latitude': '54.52', 'longitude': '30.42', 'temperature': '4.93', 'population': '9.48', 'EU': 'no', 'coastline': 'no'}, {'city': 'Oslo', 'country': 'Norway', 'latitude': '59.92', 'longitude': '10.75', 'temperature': '2.32', 'population': '5.27', 'EU': 'no', 'coastline': 'yes'}, {'city': 'Trondheim', 'country': 'Norway', 'latitude': '63.42', 'longitude': '10.42', 'temperature': '4.53', 'population': '5.27', 'EU': 'no', 'coastline': 'yes'}]
+
+The min and max temperatures for cities in EU countries that do not have coastlines
+Min temp: 4.54
+Max temp: 10.34

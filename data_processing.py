@@ -1,4 +1,4 @@
-import csv, os
+import csv
 
 class DataLoader:
     def __init__(self, filepath):
@@ -11,6 +11,7 @@ class DataLoader:
             for row in rows:
                 data.append(dict(row))
         return Table(data)
+
 
 class Table:
     def __init__(self, data):
@@ -30,42 +31,80 @@ class Table:
         """Return unique values from a column"""
         return set(row[key] for row in self.data)
 
+    def join(self, other_table, key):
+        """Join two tables using a common key"""
+        joined_rows = []
+
+        for row1 in self.data:
+            for row2 in other_table.data:
+                if row1[key] == row2[key]:
+                    merged = row1.copy()
+                    merged.update(row2)
+                    joined_rows.append(merged)
+
+        return Table(joined_rows)
+
+
+class DB:
+    def __init__(self):
+        self.tables = {}
+
+    def insert(self, name, table):
+        self.tables[name] = table
+
+    def search(self, name):
+        return self.tables.get(name, None)
+
+
 if __name__ == "__main__":
-    # Load data
-    loader = DataLoader('Cities.csv')
-    table = loader.load()
+    db = DB()
 
-    # Average temperature of all cities
-    print("Average temperature of all cities:")
-    print(table.aggregate('temperature', lambda x: sum(x)/len(x)))
+    cities_loader = DataLoader("Cities.csv")
+    countries_loader = DataLoader("Countries.csv")
+
+    cities_table = cities_loader.load()
+    countries_table = countries_loader.load()
+
+    db.insert("cities", cities_table)
+    db.insert("countries", countries_table)
+
+    cities = db.search("cities")
+    countries = db.search("countries")
+
+    print("List all cities in Italy:")
+    cities_filtered = cities.filter(lambda r: r['country'] == 'Italy')
+    print("cities_filtered:" + str(cities_filtered.data))
     print()
 
-    # All cities in Germany
-    print("All cities in Germany:")
-    germany = table.filter(lambda r: r['country'] == 'Germany')
-    for city in germany.data:
-        print(city['city'])
+    print("Average temperature for all cities in Italy:")
+    print(cities_filtered.aggregate('temperature', lambda x: sum(x)/len(x)))
     print()
 
-    # All cities in Spain with temperature above 12°C
-    print("All cities in Spain with temperature above 12°C:")
-    spain_hot = table.filter(lambda r: r['country'] == 'Spain' and float(r['temperature']) > 12)
-    for city in spain_hot.data:
-        print(city['city'])
+    print("List all non-EU countries:")
+    countries_filtered = countries.filter(lambda r: r['EU'] == 'no')
+    print("countries_filtered:" + str(countries_filtered.data))
     print()
 
-    # Number of unique countries
-    print("Number of unique countries:")
-    print(len(table.unique('country')))
+    print("Number of countries that have coastline:")
+    coastline_count = len(countries.filter(lambda r: r['coastline'] == 'yes').data)
+    print(coastline_count)
     print()
 
-    # Average temperature for Germany
-    print("Average temperature for cities in Germany:")
-    print(germany.aggregate('temperature', lambda x: sum(x)/len(x)))
+    print("First 5 entries of the joined table (cities and countries):")
+    joined = cities.join(countries, "country")
+    for row in joined.data[:5]:
+        print(row)
     print()
 
-    # Max temperature for Italy
-    print("Max temperature for cities in Italy:")
-    italy = table.filter(lambda r: r['country'] == 'Italy')
-    print(italy.aggregate('temperature', max))
+    print("Cities whose temperatures are below 5.0 in non-EU countries:")
+    non_eu = joined.filter(lambda r: r['EU'] == 'no')
+    cold_non_eu = non_eu.filter(lambda r: float(r['temperature']) < 5.0)
+    print(cold_non_eu.data)
     print()
+
+    print("The min and max temperatures for cities in EU countries that do not have coastlines")
+    eu_no_coast = joined.filter(lambda r: r['EU'] == 'yes' and r['coastline'] == 'no')
+    temps = [float(r['temperature']) for r in eu_no_coast.data]
+
+    print("Min temp:", min(temps))
+    print("Max temp:", max(temps))
