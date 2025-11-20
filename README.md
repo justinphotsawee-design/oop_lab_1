@@ -4,3 +4,5 @@
   - Introduced filter() and aggregate() reusable functions.
 - Commit 3: Refactor into OOP style  
   - Added DataLoader and Table classes with methods for filtering and aggregation.
+- Commit 4: Add DB class and table join functionality
+  - Implemented DB class for managing multiple tables, added join() method to the Table class to support joining datasets (Cities & Countries) by common keys, and added full test code for Lab 3 queries including: listing Italian cities, computing averages, filtering non-EU countries, coastline counting, joined table operations, and temperature analysis.
